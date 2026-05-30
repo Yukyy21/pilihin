@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Manager — Pilih.in</title>
+
+  <!-- Google Sans Flex -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@100..900&display=swap" rel="stylesheet">
+
+  <!-- CSS: reset → design-system → components → page-specific -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/design-system.css">
+  <link rel="stylesheet" href="../../css/components/navbar.css">
+  <link rel="stylesheet" href="../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../css/components/button.css">
+  <link rel="stylesheet" href="../../css/components/card.css">
+  <link rel="stylesheet" href="../../css/components/modal.css">
+  <link rel="stylesheet" href="../../css/pages/manager.css">
+</head>
+<body>
+
+  <div class="app-layout">
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar" id="sidebar" data-component="sidebar">
+      <div class="sidebar__logo">
+        <a href="/frontend/index.html">Pilih<span class="accent-text">.in</span></a>
+      </div>
+
+      <div class="sidebar__section-label">Manager</div>
+      <nav class="sidebar__nav" aria-label="Navigasi manager">
+        <a href="/frontend/pages/manager/dashboard.html"     class="nav-item nav-item--active">
+          <i data-feather="bar-chart-2"></i> Dashboard
+        </a>
+        <a href="/frontend/pages/manager/earnings.html"      class="nav-item">
+          <i data-feather="dollar-sign"></i> Pendapatan
+        </a>
+        <a href="/frontend/pages/manager/traffic-stats.html" class="nav-item">
+          <i data-feather="trending-up"></i> Statistik Traffic
+        </a>
+        <a href="/frontend/pages/manager/top-films.html"     class="nav-item">
+          <i data-feather="award"></i> Top Film
+        </a>
+        <a href="/frontend/pages/manager/approvals.html"     class="nav-item">
+          <i data-feather="check-circle"></i> Persetujuan
+        </a>
+        <a href="/frontend/pages/manager/reports-export.html" class="nav-item">
+          <i data-feather="download"></i> Laporan
+        </a>
+      </nav>
+
+      <div class="sidebar__divider"></div>
+
+      <div class="sidebar__section-label">Umum</div>
+      <nav class="sidebar__nav" aria-label="Navigasi umum">
+        <a href="/frontend/index.html" class="nav-item">
+          <i data-feather="home"></i> Beranda
+        </a>
+        <a href="/frontend/pages/user/profile.html" class="nav-item">
+          <i data-feather="user"></i> Profil
+        </a>
+      </nav>
+
+      <div class="sidebar__footer">
+        <button class="nav-item nav-item--danger" id="btnLogout">
+          <i data-feather="log-out"></i> Keluar
+        </button>
+      </div>
+    </aside>
+
+    <!-- ===== AREA UTAMA ===== -->
+    <div class="app-main">
+
+      <!-- Navbar -->
+      <header class="navbar" id="navbar" data-component="navbar">
+        <div class="navbar__left">
+          <button class="btn btn-ghost btn-icon" id="sidebarToggle" aria-label="Toggle sidebar">
+            <i data-feather="menu"></i>
+          </button>
+          <div class="navbar__breadcrumb">
+            <span class="text-muted">Manager</span>
+            <i data-feather="chevron-right" class="icon-xs"></i>
+            <span>Dashboard</span>
+          </div>
+        </div>
+        <div class="navbar__right">
+          <div class="navbar__date" id="currentDate"></div>
+          <button class="btn btn-ghost btn-icon" id="themeToggle" aria-label="Ganti tema">
+            <i data-feather="moon" id="themeIcon"></i>
+          </button>
+          <div class="navbar__user" id="navbarUser">
+            <div class="avatar avatar--sm" id="userAvatar"></div>
+            <span id="userName" class="text-sm"></span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Konten Utama -->
+      <main class="page-content" id="mainContent">
+
+        <!-- Page Header -->
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Dashboard</h1>
+            <p class="page-subtitle text-secondary" id="welcomeMsg">Selamat datang kembali</p>
+          </div>
+          <div class="page-header__actions">
+            <div class="period-selector">
+              <select class="select" id="periodFilter" aria-label="Filter periode">
+                <option value="7">7 hari terakhir</option>
+                <option value="30" selected>30 hari terakhir</option>
+                <option value="90">3 bulan terakhir</option>
+                <option value="365">1 tahun terakhir</option>
+              </select>
+            </div>
+            <a href="/frontend/pages/manager/reports-export.html" class="btn btn-primary">
+              <i data-feather="download"></i> Ekspor Laporan
+            </a>
+          </div>
+        </div>
+
+        <!-- ===== KPI CARDS ===== -->
+        <section class="kpi-grid" aria-label="Ringkasan KPI">
+          <div class="kpi-card" data-kpi="revenue">
+            <div class="kpi-card__header">
+              <span class="kpi-card__label">Total Pendapatan</span>
+              <div class="kpi-card__icon kpi-card__icon--success">
+                <i data-feather="dollar-sign"></i>
+              </div>
+            </div>
+            <div class="kpi-card__value" id="kpiRevenue">—</div>
+            <div class="kpi-card__footer">
+              <span class="kpi-card__badge kpi-card__badge--up" id="kpiRevenueDelta">
+                <i data-feather="trending-up"></i> —
+              </span>
+              <span class="kpi-card__period text-muted">vs periode sebelumnya</span>
+            </div>
+          </div>
+
+          <div class="kpi-card" data-kpi="users">
+            <div class="kpi-card__header">
+              <span class="kpi-card__label">Pengguna Aktif</span>
+              <div class="kpi-card__icon kpi-card__icon--info">
+                <i data-feather="users"></i>
+              </div>
+            </div>
+            <div class="kpi-card__value" id="kpiUsers">—</div>
+            <div class="kpi-card__footer">
+              <span class="kpi-card__badge kpi-card__badge--up" id="kpiUsersDelta">
+                <i data-feather="trending-up"></i> —
+              </span>
+              <span class="kpi-card__period text-muted">vs periode sebelumnya</span>
+            </div>
+          </div>
+
+          <div class="kpi-card" data-kpi="watch">
+            <div class="kpi-card__header">
+              <span class="kpi-card__label">Total Tayangan</span>
+              <div class="kpi-card__icon kpi-card__icon--warning">
+                <i data-feather="play-circle"></i>
+              </div>
+            </div>
+            <div class="kpi-card__value" id="kpiWatch">—</div>
+            <div class="kpi-card__footer">
+              <span class="kpi-card__badge" id="kpiWatchDelta">
+                <i data-feather="trending-up"></i> —
+              </span>
+              <span class="kpi-card__period text-muted">vs periode sebelumnya</span>
+            </div>
+          </div>
+
+          <div class="kpi-card" data-kpi="subscribers">
+            <div class="kpi-card__header">
+              <span class="kpi-card__label">Subscriber Baru</span>
+              <div class="kpi-card__icon kpi-card__icon--accent">
+                <i data-feather="star"></i>
+              </div>
+            </div>
+            <div class="kpi-card__value" id="kpiSubs">—</div>
+            <div class="kpi-card__footer">
+              <span class="kpi-card__badge" id="kpiSubsDelta">
+                <i data-feather="trending-up"></i> —
+              </span>
+              <span class="kpi-card__period text-muted">vs periode sebelumnya</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== BARIS TENGAH: Grafik + Distribusi Langganan ===== -->
+        <div class="dashboard-row">
+
+          <!-- Grafik Pendapatan -->
+          <section class="dashboard-card dashboard-card--wide" aria-label="Grafik pendapatan">
+            <div class="dashboard-card__header">
+              <div>
+                <h2 class="dashboard-card__title">Tren Pendapatan</h2>
+                <p class="dashboard-card__subtitle text-muted">Pendapatan harian periode terpilih</p>
+              </div>
+              <div class="chart-legend" id="revenueLegend"></div>
+            </div>
+            <div class="chart-wrapper" id="revenueChart" role="img" aria-label="Grafik tren pendapatan">
+              <div class="chart-loading">
+                <i data-feather="loader"></i>
+                <span>Memuat grafik…</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Distribusi Langganan -->
+          <section class="dashboard-card" aria-label="Distribusi langganan">
+            <div class="dashboard-card__header">
+              <div>
+                <h2 class="dashboard-card__title">Distribusi Langganan</h2>
+                <p class="dashboard-card__subtitle text-muted">Berdasarkan paket aktif</p>
+              </div>
+            </div>
+            <div class="subscription-chart" id="subscriptionChart">
+              <div class="chart-loading">
+                <i data-feather="loader"></i>
+                <span>Memuat…</span>
+              </div>
+            </div>
+            <div class="subscription-legend" id="subscriptionLegend"></div>
+          </section>
+
+        </div>
+
+        <!-- ===== BARIS BAWAH: Top Film + Transaksi Terbaru + Persetujuan Pending ===== -->
+        <div class="dashboard-row dashboard-row--three">
+
+          <!-- Top Film Minggu Ini -->
+          <section class="dashboard-card" aria-label="Top film">
+            <div class="dashboard-card__header">
+              <h2 class="dashboard-card__title">Top Film</h2>
+              <a href="/frontend/pages/manager/top-films.html" class="btn btn-ghost btn-sm">
+                Lihat semua <i data-feather="arrow-right"></i>
+              </a>
+            </div>
+            <ol class="top-film-list" id="topFilmList">
+              <li class="top-film-list__loading">
+                <i data-feather="loader"></i> Memuat…
+              </li>
+            </ol>
+          </section>
+
+          <!-- Transaksi Terbaru -->
+          <section class="dashboard-card" aria-label="Transaksi terbaru">
+            <div class="dashboard-card__header">
+              <h2 class="dashboard-card__title">Transaksi Terbaru</h2>
+              <a href="/frontend/pages/manager/earnings.html" class="btn btn-ghost btn-sm">
+                Lihat semua <i data-feather="arrow-right"></i>
+              </a>
+            </div>
+            <div class="transaction-list" id="transactionList">
+              <div class="list-loading">
+                <i data-feather="loader"></i> Memuat…
+              </div>
+            </div>
+          </section>
+
+          <!-- Persetujuan Pending -->
+          <section class="dashboard-card" aria-label="Persetujuan pending">
+            <div class="dashboard-card__header">
+              <h2 class="dashboard-card__title">Perlu Persetujuan</h2>
+              <a href="/frontend/pages/manager/approvals.html" class="btn btn-ghost btn-sm">
+                Lihat semua <i data-feather="arrow-right"></i>
+              </a>
+            </div>
+            <div class="approval-list" id="approvalList">
+              <div class="list-loading">
+                <i data-feather="loader"></i> Memuat…
+              </div>
+            </div>
+            <div class="approval-list__empty hidden" id="approvalEmpty">
+              <i data-feather="check-circle"></i>
+              <p>Tidak ada item yang perlu disetujui</p>
+            </div>
+          </section>
+
+        </div>
+
+      </main>
+    </div><!-- end .app-main -->
+  </div><!-- end .app-layout -->
+
+  <!-- ===== MODAL KONFIRMASI LOGOUT ===== -->
+  <div class="modal" id="logoutModal" data-component="modal" role="dialog" aria-modal="true" aria-labelledby="logoutModalTitle">
+    <div class="modal-overlay" data-action="close"></div>
+    <div class="modal-content modal-content--sm">
+      <button class="modal-close" data-action="close" aria-label="Tutup">
+        <i data-feather="x"></i>
+      </button>
+      <div class="modal-icon modal-icon--warning">
+        <i data-feather="log-out"></i>
+      </div>
+      <h2 class="modal-title" id="logoutModalTitle">Keluar dari akun?</h2>
+      <p class="modal-body">Sesi Anda akan diakhiri dan Anda akan diarahkan ke halaman login.</p>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-action="close">Batal</button>
+        <button class="btn btn-danger" id="btnLogoutConfirm">
+          <i data-feather="log-out"></i> Ya, Keluar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast container -->
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+  <!-- Feather Icons CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+
+  <!-- JS Module -->
+  <script type="module">
+    import { repositories } from '../../js/db/init.js';
+    import { authService }  from '../../js/db/services/AuthService.js';
+    import ManagerDashboard from '../../js/pages/manager-dashboard.js';
+    new ManagerDashboard();
+  </script>
+
+</body>
+</html>
