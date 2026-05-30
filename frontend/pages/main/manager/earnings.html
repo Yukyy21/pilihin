@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pendapatan | Manager Dashboard - Pilih.in</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@100..900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/design-system.css">
+  <link rel="stylesheet" href="../../css/components/button.css">
+  <link rel="stylesheet" href="../../css/pages/manager.css">
+</head>
+<body>
+
+  <div class="app-layout">
+    
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2 class="brand-title">Pilih.in</h2>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-item">
+          <i data-feather="bar-chart-2"></i> Dashboard
+        </a>
+        <a href="earnings.html" class="nav-item active">
+          <i data-feather="dollar-sign"></i> Pendapatan
+        </a>
+        <a href="traffic-stats.html" class="nav-item">
+          <i data-feather="trending-up"></i> Statistik Trafik
+        </a>
+        <a href="top-films.html" class="nav-item">
+          <i data-feather="award"></i> Top Film
+        </a>
+        <a href="approvals.html" class="nav-item">
+          <i data-feather="check-circle"></i> Persetujuan
+        </a>
+        <a href="reports-export.html" class="nav-item">
+          <i data-feather="download"></i> Laporan Lanjutan
+        </a>
+      </nav>
+    </aside>
+
+    <main class="app-main">
+      
+      <header class="top-navbar">
+        <div class="navbar-title">Panel Manager</div>
+        <div class="navbar-actions">
+          <button id="themeToggle" class="btn-theme-toggle" aria-label="Ganti Tema">
+            <i data-feather="moon" id="themeIcon"></i>
+          </button>
+          <div class="user-profile-menu">
+            <div class="user-avatar">
+              <i data-feather="user" class="icon-sm"></i>
+            </div>
+            <span class="user-name">Manager</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="page-content">
+        
+        <div class="page-header">
+          <div class="page-title">
+            <h1>Pendapatan & Transaksi</h1>
+            <p>Kelola dan pantau arus pendapatan langganan Pilih.in</p>
+          </div>
+          <button class="btn-export">
+            <i data-feather="download" class="icon-sm"></i>
+            Export Laporan (CSV)
+          </button>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i data-feather="dollar-sign" class="icon-lg"></i>
+            </div>
+            <div class="stat-details">
+              <h3>Pendapatan Bulan Ini</h3>
+              <div class="value">Rp 145.500.000</div>
+              <div class="trend positive">
+                <i data-feather="trending-up" class="icon-sm"></i> +12.5% dari bulan lalu
+              </div>
+            </div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i data-feather="star" class="icon-lg"></i>
+            </div>
+            <div class="stat-details">
+              <h3>Total Langganan Aktif</h3>
+              <div class="value">12,450</div>
+              <div class="trend positive">
+                <i data-feather="trending-up" class="icon-sm"></i> +840 pelanggan baru
+              </div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i data-feather="credit-card" class="icon-lg"></i>
+            </div>
+            <div class="stat-details">
+              <h3>Rata-rata Transaksi (ARPU)</h3>
+              <div class="value">Rp 48.000</div>
+              <div class="trend negative">
+                <i data-feather="trending-down" class="icon-sm"></i> -2.1% dari bulan lalu
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-section">
+          <div class="chart-header">
+            <h2 class="chart-title">Tren Pendapatan (30 Hari Terakhir)</h2>
+            <div class="chart-actions">
+              <select class="chart-select">
+                <option>30 Hari Terakhir</option>
+                <option>3 Bulan Terakhir</option>
+                <option>Tahun Ini</option>
+              </select>
+            </div>
+          </div>
+          <div class="chart-placeholder">
+            [ Area Grafik Pendapatan ]
+          </div>
+        </div>
+
+        <div class="transactions-section">
+          <div class="transactions-header">
+            <h2 class="section-title">Transaksi Terbaru</h2>
+            <div class="filter-group">
+              <div class="search-box">
+                <i data-feather="search" class="icon-sm search-icon"></i>
+                <input type="text" class="search-input" placeholder="Cari ID Transaksi...">
+              </div>
+              <button class="btn-filter">
+                <i data-feather="sliders" class="icon-sm"></i>
+              </button>
+            </div>
+          </div>
+          
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>ID Transaksi</th>
+                  <th>Tanggal</th>
+                  <th>Pengguna</th>
+                  <th>Paket</th>
+                  <th>Metode</th>
+                  <th>Total</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="transactionTableBody">
+                <tr>
+                  <td class="tx-id">TRX-882910</td>
+                  <td>24 Mei 2026, 14:30</td>
+                  <td>budi_setiawan</td>
+                  <td>Premium (1 Bulan)</td>
+                  <td>Gopay</td>
+                  <td class="tx-amount">Rp 59.000</td>
+                  <td><span class="badge badge-success">Berhasil</span></td>
+                </tr>
+                <tr>
+                  <td class="tx-id">TRX-882909</td>
+                  <td>24 Mei 2026, 14:15</td>
+                  <td>siti.amanda</td>
+                  <td>Standard (3 Bulan)</td>
+                  <td>Bank Transfer</td>
+                  <td class="tx-amount">Rp 119.000</td>
+                  <td><span class="badge badge-warning">Pending</span></td>
+                </tr>
+                <tr>
+                  <td class="tx-id">TRX-882908</td>
+                  <td>24 Mei 2026, 13:50</td>
+                  <td>Yukyy</td>
+                  <td>Basic (1 Bulan)</td>
+                  <td>OVO</td>
+                  <td class="tx-amount">Rp 29.000</td>
+                  <td><span class="badge badge-success">Berhasil</span></td>
+                </tr>
+                <tr>
+                  <td class="tx-id">TRX-882907</td>
+                  <td>24 Mei 2026, 12:10</td>
+                  <td>rizky_ahmad</td>
+                  <td>Premium (1 Tahun)</td>
+                  <td>Credit Card</td>
+                  <td class="tx-amount">Rp 599.000</td>
+                  <td><span class="badge badge-success">Berhasil</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+  
+  <script type="module" src="../../js/pages/earnings.js"></script>
+</body>
+</html>
