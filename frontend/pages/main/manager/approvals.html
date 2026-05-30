@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Persetujuan | Manager Dashboard - Pilih.in</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@100..900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/design-system.css">
+  <link rel="stylesheet" href="../../css/components/button.css">
+  <link rel="stylesheet" href="../../css/pages/manager.css">
+</head>
+<body>
+
+  <div class="app-layout">
+    
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2 class="brand-title">Pilih.in</h2>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-item">
+          <i data-feather="bar-chart-2"></i> Dashboard
+        </a>
+        <a href="earnings.html" class="nav-item">
+          <i data-feather="dollar-sign"></i> Pendapatan
+        </a>
+        <a href="traffic-stats.html" class="nav-item">
+          <i data-feather="trending-up"></i> Statistik Trafik
+        </a>
+        <a href="top-films.html" class="nav-item">
+          <i data-feather="award"></i> Top Film
+        </a>
+        <a href="approvals.html" class="nav-item active">
+          <i data-feather="check-circle"></i> Persetujuan
+        </a>
+        <a href="reports-export.html" class="nav-item">
+          <i data-feather="download"></i> Laporan Lanjutan
+        </a>
+      </nav>
+    </aside>
+
+    <main class="app-main">
+      
+      <header class="top-navbar">
+        <div class="navbar-title">Panel Manager</div>
+        <div class="navbar-actions">
+          <button id="themeToggle" class="btn-theme-toggle" aria-label="Ganti Tema">
+            <i data-feather="moon" id="themeIcon"></i>
+          </button>
+          <div class="user-profile-menu">
+            <div class="user-avatar">
+              <i data-feather="user" class="icon-sm"></i>
+            </div>
+            <span class="user-name">Manager</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="page-content">
+        
+        <div class="page-header">
+          <div class="page-title">
+            <h1>Pusat Persetujuan</h1>
+            <p>Tinjau dan kelola permintaan ulasan, pengajuan film, dan validasi transaksi.</p>
+          </div>
+          <div class="header-actions">
+            <button class="btn btn-outline" style="border-color: var(--border-color); color: var(--text-primary); display: flex; gap: 8px; align-items: center;">
+              <i data-feather="filter" class="icon-sm"></i> Filter
+            </button>
+          </div>
+        </div>
+
+        <div class="tabs-container">
+          <button class="tab-btn active">Semua (12)</button>
+          <button class="tab-btn">Ulasan Film (5)</button>
+          <button class="tab-btn">Transaksi (7)</button>
+        </div>
+
+        <div class="approval-list" id="approvalContainer">
+          
+          <div class="approval-card" data-type="transaction" data-id="TX-001">
+            <div class="approval-info">
+              <div class="approval-icon transaction">
+                <i data-feather="credit-card"></i>
+              </div>
+              <div class="approval-details">
+                <div class="approval-meta">
+                  <span class="badge badge-warning">Transaksi Manual</span>
+                  <span class="time">10 Menit yang lalu</span>
+                </div>
+                <h3>Verifikasi Pembayaran Bank Transfer</h3>
+                <p>Pengguna <strong>budi_setiawan</strong> mengunggah bukti transfer untuk paket Premium (3 Bulan) sebesar Rp 119.000.</p>
+                <a href="#" class="view-attachment"><i data-feather="paperclip" class="icon-xs"></i> Lihat Bukti Transfer</a>
+              </div>
+            </div>
+            <div class="approval-actions">
+              <button class="btn-action btn-reject" title="Tolak">
+                <i data-feather="x"></i>
+              </button>
+              <button class="btn-action btn-approve" title="Setujui">
+                <i data-feather="check"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="approval-card" data-type="review" data-id="REV-102">
+            <div class="approval-info">
+              <div class="approval-icon review">
+                <i data-feather="message-square"></i>
+              </div>
+              <div class="approval-details">
+                <div class="approval-meta">
+                  <span class="badge badge-info">Ulasan Film</span>
+                  <span class="time">1 Jam yang lalu</span>
+                </div>
+                <h3>Ulasan: "Pengabdi Setan 2"</h3>
+                <p>Pengguna <strong>siti.amanda</strong> memberikan rating 1 Bintang dan menulis kata-kata yang terdeteksi melanggar pedoman komunitas.</p>
+                <div class="review-snippet">
+                  "Filmnya sangat ****** dan tidak layak tonton, buang-buang waktu!"
+                </div>
+              </div>
+            </div>
+            <div class="approval-actions">
+              <button class="btn-action btn-reject" title="Hapus Ulasan">
+                <i data-feather="trash-2"></i>
+              </button>
+              <button class="btn-action btn-approve" title="Izinkan Tayang">
+                <i data-feather="check"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="approval-card" data-type="transaction" data-id="TX-002">
+            <div class="approval-info">
+              <div class="approval-icon transaction">
+                <i data-feather="credit-card"></i>
+              </div>
+              <div class="approval-details">
+                <div class="approval-meta">
+                  <span class="badge badge-warning">Transaksi Manual</span>
+                  <span class="time">2 Jam yang lalu</span>
+                </div>
+                <h3>Verifikasi Pembayaran Dana</h3>
+                <p>Pengguna <strong>Yukyy</strong> mengunggah bukti pembayaran untuk paket Basic (1 Bulan) sebesar Rp 29.000.</p>
+                <a href="#" class="view-attachment"><i data-feather="paperclip" class="icon-xs"></i> Lihat Bukti Pembayaran</a>
+              </div>
+            </div>
+            <div class="approval-actions">
+              <button class="btn-action btn-reject" title="Tolak">
+                <i data-feather="x"></i>
+              </button>
+              <button class="btn-action btn-approve" title="Setujui">
+                <i data-feather="check"></i>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+  
+  <script type="module" src="../../js/logic-pages/manager-approval.js"></script>
+</body>
+</html>
