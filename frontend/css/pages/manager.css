@@ -242,9 +242,7 @@
   gap: var(--space-md);
 }
 
-.dashboard-card--wide {
-  /* inherits 2fr from grid */
-}
+
 
 .dashboard-card__header {
   display: flex;
