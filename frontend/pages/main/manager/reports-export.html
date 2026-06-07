@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laporan Lanjutan | Manager Dashboard - Pilih.in</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@100..900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/design-system.css">
+  <link rel="stylesheet" href="../../../css/pages/manager.css"> 
+</head>
+<body>
+
+  <div class="app-layout">
+    
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2 class="brand-title">Pilih.in</h2>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-item">
+          <i data-feather="bar-chart-2"></i> Dashboard
+        </a>
+        <a href="earnings.html" class="nav-item">
+          <i data-feather="dollar-sign"></i> Pendapatan
+        </a>
+        <a href="traffic-stats.html" class="nav-item">
+          <i data-feather="trending-up"></i> Statistik Trafik
+        </a>
+        <a href="top-films.html" class="nav-item">
+          <i data-feather="award"></i> Top Film
+        </a>
+        <a href="approvals.html" class="nav-item">
+          <i data-feather="check-circle"></i> Persetujuan
+        </a>
+        <a href="reports-export.html" class="nav-item active">
+          <i data-feather="download"></i> Laporan Lanjutan
+        </a>
+      </nav>
+    </aside>
+
+    <main class="app-main">
+      
+      <header class="top-navbar">
+        <div class="navbar-title">Panel Manager</div>
+        <div class="navbar-actions">
+          <button id="themeToggle" class="btn-theme-toggle" aria-label="Ganti Tema">
+            <i data-feather="moon" id="themeIcon"></i>
+          </button>
+          <div class="user-profile-menu">
+            <div class="user-avatar">
+              <i data-feather="user" class="icon-sm"></i>
+            </div>
+            <span class="user-name">Manager</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="page-content">
+        
+        <div class="page-header">
+          <div class="page-title">
+            <h1>Laporan Lanjutan</h1>
+            <p>Ekspor data platform Pilih.in secara spesifik untuk keperluan analisis, pencatatan, dan audit.</p>
+          </div>
+        </div>
+
+        <div class="report-panel">
+          <form id="reportForm">
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label" for="startDate">Tanggal Mulai</label>
+                <input type="date" id="startDate" class="form-control" required>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label" for="endDate">Tanggal Akhir</label>
+                <input type="date" id="endDate" class="form-control" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="reportType">Jenis Data Laporan</label>
+                <select id="reportType" class="form-control">
+                  <option value="all">Laporan Lengkap (Semua Data)</option>
+                  <option value="revenue">Pendapatan & Transaksi</option>
+                  <option value="traffic">Statistik Trafik Kunjungan</option>
+                  <option value="users">Data Pengguna Aktif</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="formatType">Format Ekspor</label>
+                <select id="formatType" class="form-control">
+                  <option value="csv">CSV (Comma Separated Values)</option>
+                  <option value="pdf">PDF Document</option>
+                  <option value="xlsx">Excel (XLSX)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group extra-options-group">
+              <label class="form-label">Opsi Tambahan</label>
+              <div class="checkbox-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" class="checkbox-input" checked>
+                  Sertakan grafik visualisasi dalam dokumen
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" class="checkbox-input">
+                  Sembunyikan data sensitif personal pengguna (Email, No HP)
+                </label>
+              </div>
+            </div>
+
+            <button type="button" id="btnGenerateReport" class="btn-generate">
+              <i data-feather="file-text"></i> Buat Laporan
+            </button>
+          </form>
+        </div>
+
+        <div class="history-section">
+          <div class="history-header">
+            <h2 class="section-title">Riwayat Ekspor Terbaru</h2>
+          </div>
+          
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Nama File</th>
+                  <th>Jenis Laporan</th>
+                  <th>Tanggal Dibuat</th>
+                  <th>Status</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="historyTableBody">
+                <tr>
+                  <td class="file-name-cell">Laporan_Pendapatan_Mei2026.csv</td>
+                  <td>Pendapatan</td>
+                  <td>28/05/2026</td>
+                  <td><span class="badge badge-success">Selesai</span></td>
+                  <td>
+                    <button class="btn-download" title="Unduh File">
+                      <i data-feather="download"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="file-name-cell">Laporan_Trafik_Q1.pdf</td>
+                  <td>Statistik Trafik</td>
+                  <td>15/04/2026</td>
+                  <td><span class="badge badge-success">Selesai</span></td>
+                  <td>
+                    <button class="btn-download" title="Unduh File">
+                      <i data-feather="download"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+  
+  <script type="module" src="../../../js/logic-pages/manager-reports.js"></script>
+</body>
+</html>
