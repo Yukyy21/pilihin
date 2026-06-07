@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Top Film | Manager Dashboard - Pilih.in</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@100..900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/design-system.css">
+  <link rel="stylesheet" href="../../../css/pages/manager.css">
+</head>
+<body>
+
+  <div class="app-layout">
+    
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2 class="brand-title">Pilih.in</h2>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-item">
+          <i data-feather="bar-chart-2"></i> Dashboard
+        </a>
+        <a href="earnings.html" class="nav-item">
+          <i data-feather="dollar-sign"></i> Pendapatan
+        </a>
+        <a href="traffic-stats.html" class="nav-item">
+          <i data-feather="trending-up"></i> Statistik Trafik
+        </a>
+        <a href="top-films.html" class="nav-item active">
+          <i data-feather="award"></i> Top Film
+        </a>
+        <a href="approvals.html" class="nav-item">
+          <i data-feather="check-circle"></i> Persetujuan
+        </a>
+        <a href="reports-export.html" class="nav-item">
+          <i data-feather="download"></i> Laporan Lanjutan
+        </a>
+      </nav>
+    </aside>
+
+    <main class="app-main">
+      
+      <header class="top-navbar">
+        <div class="navbar-title">Panel Manager</div>
+        <div class="navbar-actions">
+          <button id="themeToggle" class="btn-theme-toggle" aria-label="Ganti Tema">
+            <i data-feather="moon" id="themeIcon"></i>
+          </button>
+          <div class="user-profile-menu">
+            <div class="user-avatar">
+              <i data-feather="user" class="icon-sm"></i>
+            </div>
+            <span class="user-name">Manager</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="page-content">
+        
+        <div class="page-header">
+          <div class="page-title">
+            <h1>Peringkat Top Film</h1>
+            <p>Pantau performa, jumlah tayangan, dan rating film-film di platform Pilih.in.</p>
+          </div>
+          <div class="header-actions">
+            <button class="btn-outline">
+              <i data-feather="filter" class="icon-sm"></i> Filter Kategori
+            </button>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon rank-1-bg">
+              <i data-feather="award"></i>
+            </div>
+            <div class="stat-details">
+              <h3>Film Paling Banyak Ditonton</h3>
+              <div class="value">Pengabdi Setan 2</div>
+              <div class="trend positive">1.2M+ Tayangan</div>
+            </div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-icon rank-2-bg">
+              <i data-feather="star"></i>
+            </div>
+            <div class="stat-details">
+              <h3>Rating Tertinggi Bulan Ini</h3>
+              <div class="value">Ngeri-Ngeri Sedap</div>
+              <div class="trend positive">4.9 / 5.0 (82k Ulasan)</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon rank-3-bg">
+              <i data-feather="trending-up"></i>
+            </div>
+            <div class="stat-details">
+              <h3>Genre Terpopuler</h3>
+              <div class="value">Horror & Thriller</div>
+              <div class="trend">45% dari total tayangan</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ranking-section">
+          <div class="ranking-header">
+            <h2 class="section-title">Top 10 Film (Bulan Ini)</h2>
+            <div class="search-box">
+              <i data-feather="search" class="icon-sm search-icon"></i>
+              <input type="text" class="search-input" placeholder="Cari judul film...">
+            </div>
+          </div>
+          
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width: 80px;">Peringkat</th>
+                  <th>Judul Film</th>
+                  <th>Genre</th>
+                  <th>Total Tayangan</th>
+                  <th>Rating</th>
+                  <th>Status</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="topFilmsTableBody">
+                <tr>
+                  <td class="text-center">
+                    <div class="rank-badge rank-1">1</div>
+                  </td>
+                  <td>
+                    <div class="film-info">
+                      <div class="film-thumb bg-placeholder">PS2</div>
+                      <div class="film-name">Pengabdi Setan 2: Communion</div>
+                    </div>
+                  </td>
+                  <td><span class="genre-tag">Horror</span></td>
+                  <td class="font-medium">1,245,000</td>
+                  <td>
+                    <div class="rating-display">
+                      <i data-feather="star" class="icon-xs star-filled"></i> 4.8
+                    </div>
+                  </td>
+                  <td><span class="badge badge-success">Aktif</span></td>
+                  <td>
+                    <button class="btn-icon" title="Detail"><i data-feather="eye"></i></button>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td class="text-center">
+                    <div class="rank-badge rank-2">2</div>
+                  </td>
+                  <td>
+                    <div class="film-info">
+                      <div class="film-thumb bg-placeholder">NNS</div>
+                      <div class="film-name">Ngeri-Ngeri Sedap</div>
+                    </div>
+                  </td>
+                  <td><span class="genre-tag">Drama Komedi</span></td>
+                  <td class="font-medium">980,500</td>
+                  <td>
+                    <div class="rating-display">
+                      <i data-feather="star" class="icon-xs star-filled"></i> 4.9
+                    </div>
+                  </td>
+                  <td><span class="badge badge-success">Aktif</span></td>
+                  <td>
+                    <button class="btn-icon" title="Detail"><i data-feather="eye"></i></button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="text-center">
+                    <div class="rank-badge rank-3">3</div>
+                  </td>
+                  <td>
+                    <div class="film-info">
+                      <div class="film-thumb bg-placeholder">MNC</div>
+                      <div class="film-name">Mencuri Raden Saleh</div>
+                    </div>
+                  </td>
+                  <td><span class="genre-tag">Action Heist</span></td>
+                  <td class="font-medium">850,200</td>
+                  <td>
+                    <div class="rating-display">
+                      <i data-feather="star" class="icon-xs star-filled"></i> 4.7
+                    </div>
+                  </td>
+                  <td><span class="badge badge-success">Aktif</span></td>
+                  <td>
+                    <button class="btn-icon" title="Detail"><i data-feather="eye"></i></button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="text-center">
+                    <div class="rank-badge rank-regular">4</div>
+                  </td>
+                  <td>
+                    <div class="film-info">
+                      <div class="film-thumb bg-placeholder">KKN</div>
+                      <div class="film-name">KKN di Desa Penari</div>
+                    </div>
+                  </td>
+                  <td><span class="genre-tag">Horror</span></td>
+                  <td class="font-medium">720,000</td>
+                  <td>
+                    <div class="rating-display">
+                      <i data-feather="star" class="icon-xs star-filled"></i> 4.5
+                    </div>
+                  </td>
+                  <td><span class="badge badge-warning">Turun</span></td>
+                  <td>
+                    <button class="btn-icon" title="Detail"><i data-feather="eye"></i></button>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+  
+  <script type="module" src="../../../js/logic-pages/manager-top-film.js"></script>
+</body>
+</html>
