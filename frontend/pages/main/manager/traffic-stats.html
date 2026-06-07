@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Statistik Trafik | Manager Dashboard - Pilih.in</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@100..900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/design-system.css">
+  <link rel="stylesheet" href="../../../css/pages/manager.css">
+</head>
+<body>
+
+  <div class="app-layout">
+    
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2 class="brand-title">Pilih.in</h2>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-item">
+          <i data-feather="bar-chart-2"></i> Dashboard
+        </a>
+        <a href="earnings.html" class="nav-item">
+          <i data-feather="dollar-sign"></i> Pendapatan
+        </a>
+        <a href="traffic-stats.html" class="nav-item active">
+          <i data-feather="trending-up"></i> Statistik Trafik
+        </a>
+        <a href="top-films.html" class="nav-item">
+          <i data-feather="award"></i> Top Film
+        </a>
+        <a href="approvals.html" class="nav-item">
+          <i data-feather="check-circle"></i> Persetujuan
+        </a>
+        <a href="reports-export.html" class="nav-item">
+          <i data-feather="download"></i> Laporan Lanjutan
+        </a>
+      </nav>
+    </aside>
+
+    <main class="app-main">
+      
+      <header class="top-navbar">
+        <div class="navbar-title">Panel Manager</div>
+        <div class="navbar-actions">
+          <button id="themeToggle" class="btn-theme-toggle" aria-label="Ganti Tema">
+            <i data-feather="moon" id="themeIcon"></i>
+          </button>
+          <div class="user-profile-menu">
+            <div class="user-avatar">
+              <i data-feather="user" class="icon-sm"></i>
+            </div>
+            <span class="user-name">Manager</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="page-content">
+        
+        <div class="page-header">
+          <div class="page-title">
+            <h1>Analisis Statistik Trafik</h1>
+            <p>Pantau kunjungan pengguna, durasi sesi, dan asal sumber grafik pengunjung situs Pilih.in.</p>
+          </div>
+          <div class="header-actions">
+            <select id="timeRangeSelect" class="filter-select">
+              <option value="7">7 Hari Terakhir</option>
+              <option value="30" selected>30 Hari Terakhir</option>
+              <option value="90">3 Bulan Terakhir</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon views-bg">
+              <i data-feather="eye"></i>
+            </div>
+            <div class="stat-details">
+              <h3>Total Kunjungan Halaman</h3>
+              <div class="value">2,845,210</div>
+              <div class="trend positive">
+                <i data-feather="arrow-up-right" class="icon-xs"></i> +14.2% mtd
+              </div>
+            </div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-icon users-bg">
+              <i data-feather="users"></i>
+            </div>
+            <div class="stat-details">
+              <h3>Pengunjung Unik</h3>
+              <div class="value">412,890</div>
+              <div class="trend positive">
+                <i data-feather="arrow-up-right" class="icon-xs"></i> +8.6% mtd
+              </div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon duration-bg">
+              <i data-feather="clock"></i>
+            </div>
+            <div class="stat-details">
+              <h3>Rata-rata Durasi Sesi</h3>
+              <div class="value">42m 15s</div>
+              <div class="trend positive">
+                <i data-feather="arrow-up-right" class="icon-xs"></i> +5.3% mtd
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-section">
+          <div class="chart-header">
+            <h2 class="chart-title">Grafik Tren Pengunjung Harian</h2>
+            <div class="chart-legend">
+              <span class="legend-item"><span class="legend-color unique-color"></span> Pengunjung Unik</span>
+              <span class="legend-item"><span class="legend-color views-color"></span> Total Tayangan</span>
+            </div>
+          </div>
+          <div class="chart-placeholder">
+            [ Area Grafik Tren Kunjungan Real-time ]
+          </div>
+        </div>
+
+        <div class="details-grid">
+          
+          <div class="info-section">
+            <div class="section-header">
+              <h2 class="section-title">Sumber Rujukan Utama (Referral)</h2>
+            </div>
+            <div class="list-container">
+              <div class="list-item">
+                <span class="item-name">Direct / Langsung</span>
+                <span class="item-value font-medium">45% (1,280,344)</span>
+              </div>
+              <div class="list-item">
+                <span class="item-name">Google Search</span>
+                <span class="item-value font-medium">30% (853,563)</span>
+              </div>
+              <div class="list-item">
+                <span class="item-name">Instagram / Sosial Media</span>
+                <span class="item-value font-medium">15% (426,781)</span>
+              </div>
+              <div class="list-item">
+                <span class="item-name">Twitter / X</span>
+                <span class="item-value font-medium">7% (199,164)</span>
+              </div>
+              <div class="list-item">
+                <span class="item-name">Lainnya</span>
+                <span class="item-value font-medium">3% (85,358)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-section">
+            <div class="section-header">
+              <h2 class="section-title">Penggunaan Perangkat (Device)</h2>
+            </div>
+            <div class="list-container">
+              <div class="list-item">
+                <div class="item-label-group">
+                  <i data-feather="smartphone" class="icon-sm"></i>
+                  <span class="item-name">Mobile / Smartphone</span>
+                </div>
+                <span class="item-value font-medium">72%</span>
+              </div>
+              <div class="list-item">
+                <div class="item-label-group">
+                  <i data-feather="monitor" class="icon-sm"></i>
+                  <span class="item-name">Desktop / Laptop</span>
+                </div>
+                <span class="item-value font-medium">25%</span>
+              </div>
+              <div class="list-item">
+                <div class="item-label-group">
+                  <i data-feather="tablet" class="icon-sm"></i>
+                  <span class="item-name">Tablet</span>
+                </div>
+                <span class="item-value font-medium">3%</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+  
+  <script type="module" src="../../../js/logic-pages/manager-traffic-stats.js"></script>
+</body>
+</html>
